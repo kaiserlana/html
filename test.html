@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>小米首页</title>
+        <style>
+            /*通配符选择器*/
+            body{
+                font: 14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+                color: #333;
+                background-color: #fff;
+            }
+
+
+            /*topbar 部分*/
+            .site-topbar{
+                height:40px;
+                width: 100%;
+                /*背景色*/
+                background: #333;
+                /* 字体颜色*/
+                color:#b0b0b0;
+            }
+
+            .site-topbar a{
+                color: #b0b0b0;
+                display: inline-block;
+                margin-right: 5px;
+                margin-left: 5px;
+            }
+
+            /*高亮*/
+            .site-topbar a:hover{
+                color: #ffffff;
+            }
+
+            .site-topbar-container{
+                margin: 0 auto;
+                width:1226px;
+                line-height: 40px;
+            }
+
+            .topbar-nav{
+                float: left;
+            }
+
+            .topbar-info{
+                /*margin-right: 20px;*/
+                float: right;
+            }
+
+            .topbar-cart{
+                float: right;
+            }
+
+            /*统一去掉超链接的下划线*/
+            a{
+                text-decoration: none;
+            }
+
+            /*tobar结束*/
+
+            /*--------------------------------------分界线--------------------------------------*/
+            /*header 部分*/
+            .site-header-container{
+                margin: 0 auto;
+                width:1226px;
+                height: 100px;
+                /*background-color: gray;*/
+                line-height: 100px;
+                font-size: 18px;
+            }
+
+            .header-logo img{
+                width: 56px;
+                margin-top: 22px;
+            }
+
+            .header-logo{
+                float: left;
+            }
+
+            .header-nav{
+                float: left;
+            }
+
+            /*.header-search input{*/
+                /*float: right;*/
+                /*width: 223px;*/
+                /*height: 48px;*/
+                /*font-size: 14px;*/
+                /*line-height: 48px;*/
+
+                /*!*width: 40px;*!*/
+                /*!*height: 40px;*!*/
+
+                /*!*position: relative;*!*/
+                /*!*right: 80px;*!*/
+                /*!*top: 15px;*!*/
+            /*}*/
+
+            li{
+                list-style-type: none;
+            }
+
+
+            /*header结束*/
+
+            .search-btn {
+                float: left;
+                width: 52px;
+                height: 50px;
+                font-size: 18px;
+                background-color: #fff;
+                color: #616161;
+                border: 1px solid rgb(224, 224, 224);
+                border-left: none;
+
+            }
+
+            .search-btn:hover {
+                background-color: #ff6700;
+                color: #fff;
+                border: none;
+            }
+
+            .search-inp {
+                float: left;
+                width: 244px;
+                height: 50px;
+                box-sizing: border-box;
+                border: none;
+                padding: 0 10px;
+                font-size: 16px;
+                border: 1px solid rgb(224, 224, 224);
+
+            }
+
+            .search-btn img{
+                width: 20px;
+                height: 20px;
+            }
+
+            .search-wrapper {
+                width: 296px;
+                height: 50px;
+                float: right;
+                margin-top: 25px;
+                position: relative;
+                margin-right: 20px;
+                top: 15px;
+                left: 20px;
+            }
+
+            .header-nav ul{
+                margin-left: 100px;
+            }
+            .header-nav ul li{
+                float: left;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .container{
+                width: 1226px;
+                margin: 0 auto;
+            }
+
+            /*--------------------------------------分界线--------------------------------------*/
+
+            /*图片轮播*/
+            .home-hero-container{
+                width: 1226px;
+                height: 460px;
+                background-color: #b0b0b0;
+                margin: 0 auto;
+            }
+
+            .home-hero-container div{
+                float: left;
+            }
+
+            .home-hero-container div.home{
+                height: 460px;
+                width: 20%;
+                background-color: rgba(105,101,101,.6);
+                /*float: left;*/
+            }
+
+            .home-hero-container div.swiper-side{
+                width: 80%;
+                height: 460px;
+                background-color: #e4ffc8;
+                /*float: left;*/
+            }
+
+            .home-hero-container div.home ul li a{
+                color: white;
+            }
+
+            .home-hero-container div.swiper-side{
+                position: relative;
+            }
+
+            .home-hero-container div.swiper-side img{
+                width: 100%;
+                height: 100%;
+            }
+
+            .home-hero-container div.home ul li{
+                /*height: 100%;*/
+                /*width: 40px;*/
+                width: 100%;
+                height: 40px;
+                position: relative;
+                padding-left: 40px;
+
+
+                line-height: 40px;
+                box-sizing: border-box;
+            }
+
+            .home-hero-container div.home ul li:hover{
+                background-color: #ff6700;
+                line-height: 40px;
+            }
+
+            .home-hero-container div.home ul li img{
+                position: absolute;
+
+                left: 90%;
+                top:50%;
+
+                /*偏移，往自己的左和上方偏移自己宽的一半*/
+                transform: translate(-50%,-50%);
+                width: 20px
+            }
+
+            .home-hero-container div.swiper-side span.left img{
+                height: 70px;
+                width: 50px;
+                /*background-color: azure;*/
+
+                position: absolute;
+
+                left: 0%;
+                top:50%;
+
+                /*偏移，往自己的左和上方偏移自己宽的一半*/
+                transform: translate(0%,-50%);
+            }
+
+            .home-hero-container div.swiper-side span.right img{
+                height: 70px;
+                width: 50px;
+                /*background-color:blue;*/
+
+                position: absolute;
+
+                left: 100%;
+                top:50%;
+
+                /*偏移，往自己的左和上方偏移自己宽的一半*/
+                transform: translate(-100%,-50%);
+            }
+
+            .home-hero-container div.swiper-side span.right img:hover{
+                background-color: #b3a4a3;
+            }
+
+            .home-hero-container div.swiper-side span.left img:hover{
+                background-color: #b3a4a3;
+            }
+
+
+            /*--------------------------------------分界线--------------------------------------*/
+
+            .shop {
+                width: 1226px;
+                height: 180px;
+
+                margin: 12px auto;
+
+                /*background-color: #24b06f;*/
+            }
+
+            .shop div.other{
+                float: left;
+                width: 20%;
+                height: 180px;
+                background-color: #8d8673;
+            }
+
+            .shop div.hot{
+                float: left;
+                width: 80%;
+                height: 180px;
+                /*background-color: black;*/
+            }
+
+            .shop div.hot img {
+                float: left;
+                height: 180px;
+                width: 32%;
+
+
+
+                margin: 1px 6px 1px 6px;
+                /*padding: 0 1px;*/
+            }
+
+            .shop div.hot img:hover{
+                box-shadow:10px 5px 5px 1px rgba( 0 , 0 , 0 , 0.5);
+            }
+
+            .screen{
+                width: 1226px;
+                height: 120px;
+
+                margin: 12px auto;
+            }
+
+            .screen img{
+                width: 100%;
+                height: 100%;
+            }
+
+            /*.game{*/
+                /*width: 1080px;*/
+                /*height: 600px;*/
+
+                /*background-color: #b0b0b0;*/
+                /*margin: 12px auto;*/
+            /*}*/
+
+            /*.game video{*/
+
+                /*width: 100%;*/
+                /*height: 100%;*/
+            /*}*/
+
+
+        </style>
+
+    </head>
+
+
+
+
+
+
+
+
+
+    <!--****************************head body分割线*********************************************-->
+
+
+
+
+
+    <body>
+        <!--topbar 开始-->
+        <div class="site-topbar">
+            <div class="site-topbar-container">
+                <div class="topbar-nav">
+                    <a rel="nofollow" href="//www.mi.com/">小米官网</a>
+                    <span class="sep">|</span>
+                    <a rel="nofollow" href="//www.mi.com/shop">小米商城</a>
+                    <span class="sep">|</span>
+                    <a rel="nofollow" href="//www.miui.com/" target="_blank">MIUI</a>
+                    <span class="sep">|</span>
+                    <a rel="nofollow" href="//iot.mi.com" target="_blank">IoT</a>
+                    <span class="sep">|</span>
+                    <a rel="nofollow" href="//i.mi.com/" target="_blank">云服务</a>
+                    <span class="sep">|</span>
+                    <a rel="nofollow" href="//airstar.com/home" target="_blank">天星数科</a>
+                    <span class="sep">|</span>
+                    <a rel="nofollow" href="//youpin.mi.com/" target="_blank">有品</a>
+                    <span class="sep">|</span>
+                    <a rel="nofollow" href="//xiaoai.mi.com/" target="_blank">小爱开放平台</a>
+                    <span class="sep">|</span>
+                    <a rel="nofollow" href="//qiye.mi.com/" target="_blank">企业团购</a>
+                </div>
+
+                <div class="topbar-cart">
+                    <a href="">购物车</a>
+                </div>
+
+                <div class="topbar-info">
+                    <a href="">登录</a>
+                    <a href="">注册</a>
+                    <a href="">消息通知</a>
+                </div>
+            </div>
+        </div>
+        <!--topbar  结束-->
+
+
+
+        <!--header 开始-->
+            <div class="site-header-container">
+                <div class="header-logo">
+                    <a href="https://www.mi.com/" target="_blank">
+                        <img src="img/logo-mi2.png">
+                    </a>
+                </div>
+                <div class="header-nav">
+                    <ul>
+                        <li>小米手机</li>
+                        <li>Redmi手机</li>
+                        <li>电视</li>
+                        <li>笔记本</li>
+                        <li>平板</li>
+                        <li>家电</li>
+                        <li>路由器</li>
+                        <li>服务器中心</li>
+                        <li>社区</li>
+                    </ul>
+                </div>
+                <!--<div class="header-search">-->
+                    <!--<input type="text" placeholder="手机" >-->
+                <!--</div>-->
+                <div class="search-wrapper">
+                    <form class="search" action="javascript:;">
+                        <input class="search-inp" type="text" placeholder="请输入商品名称">
+                        <button class="search-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <img src="./img/serch.png">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        <!--header 结束-->
+
+
+
+
+
+
+
+
+
+
+        <!--清除上面的浮动影响-->
+        <div style="clear: both"></div>
+
+        <!--轮播图-->
+        <div class="home-hero-container">
+            <div class="home">
+                <ul style="padding-left: 0px;padding-top: 15px">
+                    <li>
+                        <a href="">
+                            手机
+                            <i>
+                                <img src="./img/right.png"/>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            电视
+                            <i>
+                                <img src="./img/right.png"/>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            家电
+                            <i>
+                                <img src="./img/right.png"/>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            笔记本 平板
+                            <i>
+                                <img src="./img/right.png"/>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            出行 穿戴
+                            <i>
+                                <img src="./img/right.png">
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            耳机 音箱
+                            <i>
+                                <img src="./img/right.png"/>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            健康 儿童
+                            <i>
+                                <img src="./img/right.png"/>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            生活 箱包
+                            <i>
+                                <img src="./img/right.png"/>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            智能 路由器
+                            <i>
+                                <img src="./img/right.png"/>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            电源 配件
+                            <i>
+                                <img src="./img/right.png"/>
+                            </i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="swiper-side">
+                <a href="https://www.mi.com/shop/buy/detail?product_id=10050035" target="_blank">
+                    <img src="img/qqq.jpg">
+                </a>
+                <span class="left over_sub">
+                    <img src="./img/left.png">
+                </span>
+
+                <span class="right">
+                    <img src="./img/right.png">
+                </span>
+            </div>
+        </div>
+
+        <div class="shop">
+
+            <div class="other">
+
+            </div>
+
+            <div class="hot">
+                <div class="commodity1">
+                    <a href="https://www.mi.com/shop/buy/detail?product_id=18268" target="_blank">
+                        <img src="img/1.jpg">
+                    </a>
+                </div>
+
+                <div class="commodity2">
+                    <a href="https://www.mi.com/shop/buy/detail?product_id=10050021" target="_blank">
+                        <img src="img/2.jpg">
+                    </a>
+                </div>
+
+                <div class="commodity3">
+                    <a href="https://www.mi.com/shop/buy/detail?product_id=18075" target="_blank">
+                        <img src="img/3.jpg">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="screen">
+            <a href="https://www.mi.com/shop/buy/detail?product_id=18363" target="_blank">
+                <img src="img/4.webp">
+            </a>
+        </div>
+
+        <!--<div class="game">-->
+            <!--<video src="./video/qaq.mp4" controls>-->
+
+            <!--</video>-->
+        <!--</div>-->
+
+
+
+    </body>
+</html>
